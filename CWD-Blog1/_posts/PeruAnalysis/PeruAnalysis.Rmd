@@ -1,7 +1,7 @@
 ---
 title: "Escenario COVID-19 en PERÚ"
 description: |
-  Covid-19 cases are growing to unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that it is to adapt to change, but change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.
+  Covid-19 cases are growing to unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that to adapt to change, but change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.
 author:
   - name: Priya Ravindra Dingorkar
     url: https://www.linkedin.com/in/priya-dingorkar
@@ -16,10 +16,6 @@ output:
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("Data/Peru.jpg")
 ```
-
-
-
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(readr)
@@ -32,10 +28,23 @@ library(tidycovid19)
 library(zoo)
 library(kableExtra)
 library(qwraps2)
+library(ggplot2)
 
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
 ```
+
+## Coronavirus Arrives in Peru
+
+Coronavirus was first born in Wuhan China in the first week of December, this viruses causes problems with the respiratory system, thus infecting the body with mild to more severe diseases, this virus is easily contagious, close to contact with an infected individual. Good hand hygiene and cleanliness etiquette, social distancing and of course, the mask are one of the most effective steps to help prevent the virus from entering your system.
+
+```{r, fig.cap= "Symptoms of COVID-19", fig.align='center', out.width="10%"}
+knitr::include_graphics("Data/sym.jpg")
+```
+
+In this Blog, we will focus our discuss to COVID-19 and its impact in Peru. The virus was first  confirmed to have spread to Peru on 6 March 2020 when a 25-year-old man who had traveled to Spain, France and the Czech Republic tested positive. On 15 March 2020, President Martín Vizcarra declared a national shutdown, closing borders, barring domestic travel, and banning non-essential business operations — excluding health facilities, food vendors, pharmacies, and financial institutions. Peru, was one of the first countries to put the first lockdown in operation.
+
+## Overview of the Virus in Peru
 
 ```{r}
 peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
@@ -43,11 +52,52 @@ peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
 peru_stats <- peru_stats %>% mutate(month = month(date), 
                      day = day(date), 
                      week = week(date))
+
+owid_covid_data <- read_csv("Data/owid-covid-data.csv")
+
+peru_owid <- owid_covid_data %>% dplyr::filter(iso_code == "PER")
 ```
+
+```{r, fig.align='center', fig.cap= "OverView of COVID-19 Cases & Deaths in Peru"}
+options(scipen = 99)
+library(ggplot2)
+theme_set(theme_classic())
+
+
+plot1 <- ggplot(peru_owid, aes(x=date)) + scale_x_date(date_labels = "%m-%Y") + 
+  geom_line(aes(y=total_cases)) + xlab("Months") + ylab("Confirmed Cases") + scale_y_log10()
+
+plot2 <- ggplot(peru_owid, aes(x=date)) + scale_x_date(date_labels = "%m-%Y") +
+  geom_line(aes(y=total_deaths)) + xlab("Months") + ylab("Death Cases") + scale_y_log10()
+
+gridExtra::grid.arrange(plot1, plot2)
+```
+
+In Figure 2, we have witnessed the tremendously increasing covid-19 cases in Peru. Unfortunately, as mentioned earlier, Peru was on of the first countries, to operate the lockdown but despite of months of long mandatory lockdown and a night-time curfew, infections have jumped in Peru.
+
+Lets us fi
+
+```{r, fig.align='center', fig.cap="Information of the Total Cases and Deaths"}
+
+table_for_dt <- peru_owid  %>% mutate(month = month(date),
+                                                   day = day(date), 
+                                                  week = week(date)) %>% 
+  dplyr::select(date, day, week, month, 
+                total_cases,  
+                total_deaths)
+  
+DT::datatable(table_for_dt, 
+              rownames = FALSE,
+              filter="top", 
+              options = list(pageLength = 5, scrollX=T))
+```
+
+
+
+
 
 ```{r}
 owid_covid_data <- read_csv("Data/owid-covid-data.csv")
-
 peru_owid <- owid_covid_data %>% dplyr::filter(iso_code == "PER")
 ```
 
@@ -99,9 +149,17 @@ summary_table(peru_stats_deaths, summary_statistics) %>% kableExtra::kable(capti
 ```
 
 ```{r}
-DT::datatable(top_colleges, 
+
+DT::datatable(peru_covid_longer, 
               rownames = FALSE,
               filter="top", 
               options = list(pageLength = 5, scrollX=T))
 ```
+
+
+```{r}
+ peru_covid_longer %>% ggplot(aes(month, death)) + geom_col()
+```
+
+
 

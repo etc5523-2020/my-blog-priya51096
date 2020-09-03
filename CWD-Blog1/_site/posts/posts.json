@@ -2,7 +2,7 @@
   {
     "path": "posts/PeruAnalysis/",
     "title": "Escenario COVID-19 en PERÚ",
-    "description": "Covid-19 cases are growing to unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that it is to adapt to change, but change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.",
+    "description": "Covid-19 cases are growing to unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that to adapt to change, but change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.",
     "author": [
       {
         "name": "Priya Ravindra Dingorkar",
@@ -12,7 +12,7 @@
     "date": "2020-09-04",
     "categories": [],
     "preview": "posts/PeruAnalysis/Data/Peru.jpg",
-    "last_modified": "2020-09-04T01:14:22+10:00",
-    "input_file": "PeruAnalysis.utf8.md"
+    "last_modified": "2020-09-04T04:53:37+10:00",
+    "input_file": {}
   }
 ]
