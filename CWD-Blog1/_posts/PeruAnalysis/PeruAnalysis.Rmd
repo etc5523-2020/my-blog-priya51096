@@ -1,0 +1,71 @@
+---
+title: "Escenario COVID-19 en PERÚ"
+description: |
+  Covid-19 cases are growing to unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that it is to adapt to change, but change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.
+author:
+  - name: Priya Ravindra Dingorkar
+    url: https://www.linkedin.com/in/priya-dingorkar
+    affiliation: Master's of Buisness Analytics, Monash University 
+    affiliation_url: https://www.monash.edu/
+date: 09-04-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(readr)
+library(dplyr)
+library(tidyverse)
+library(coronavirus)
+library(lubridate)
+library(DT)
+library(tidycovid19)
+library(zoo)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+```
+
+
+
+```{r}
+peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
+
+peru_stats <- peru_stats %>% mutate(month = month(date), 
+                     day = day(date), 
+                     week = week(date))
+```
+
+
+```{r}
+owid_covid_data <- read_csv("Data/owid-covid-data.csv")
+
+peru_owid <- owid_covid_data %>% dplyr::filter(iso_code == "PER")
+```
+
+```{r}
+peru_covid <- coronavirus %>% dplyr::filter(country == "Peru")
+
+peru_covid_longer <- peru_covid %>% pivot_wider(values_from = "cases", names_from  = "type")
+
+peru_covid_longer <- peru_covid_longer %>% mutate(month = month(date),
+                                                   day = day(date), 
+                                                  week = week(date))
+peru_covid_longer <- peru_covid_longer %>% dplyr::select(date, 
+                                   day,
+                                   month,
+                                   week, 
+                                   confirmed,
+                                   death, 
+                                   recovered) 
+```
+
+```{r}
+df <- download_merged_data(cached = TRUE, silent = TRUE)
+df1 <- download_wbank_data(cached = TRUE, silent = TRUE)
+df2 <- download_google_cmr_data(cached = TRUE, silent = TRUE)
+df3 <- download_owid_testing_data(cached = TRUE, silent = TRUE)
+```
+

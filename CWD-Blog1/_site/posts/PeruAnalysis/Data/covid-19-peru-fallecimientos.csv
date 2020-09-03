@@ -1,0 +1,56 @@
+"fecha_anuncio","fecha_fallecimiento","fecha_ingreso","edad","sexo","región","viaje","fecha_retorno","contacto","contacto_origen","fecha_contacto","lugar_fallecimiento","insuf_resp","neumonia","otros_sintomas","factores","misc","comunicado_minsa"
+"2020-03-19","2020-03-19","2020-03-17",78,"masculino","Lima",,,,,,"hospital",1,,,"hipertensión",,19
+"2020-03-19","2020-03-19",,47,"masculino","Lima","España",,,,,"hospital",1,,"shock séptico","asma;obesidad",,21
+"2020-03-19",,,69,"masculino","Lima","España",,,,,"casa",1,,,,,21
+"2020-03-20","2020-03-20","2020-03-19",75,"femenino","Lima","España",,,,,"hospital",1,1,,,,22
+"2020-03-21","2020-03-21","2020-03-15",83,"masculino","Piura",,,"familiar","Europa",,"hospital",1,1,,,,25
+"2020-03-24","2020-03-23","2020-03-22",38,"masculino","Lima",,,"laboral","Canadá",,"hospital",1,1,"infección respiratoria","obesidad",,30
+"2020-03-24","2020-03-24",,66,"femenino","La Libertad","España","2020-03-14",,,,"hospital",1,1,,,,30
+"2020-03-25","2020-03-24",,76,"masculino","Cusco",,,,,,"hospital",1,,"comorbilidad","diabetes;enfermedades cardíacas","nacionalidad mexicana",32
+"2020-03-25","2020-03-24",,94,"masculino","Lima",,,,,,"hospital",,,"insuficiencia renal;bronquitis crónica","diabetes",,32
+2020-03-27,2020-03-26,2020-03-26,56,"masculino","La Libertad",,,,,,"hospital",1,,,,,35
+2020-03-27,2020-03-26,2020-03-21,65,"masculino","Lima",,,,,,"hospital",1,,,,,35
+2020-03-28,2020-03-26,,50,"masculino","Lambayeque",,,,,,"hospital",1,1,,,,37
+2020-03-28,2020-03-26,,66,"masculino","Lima",,,,,,"hospital",1,1,"sepsis",,,37
+2020-03-28,2020-03-27,,43,"masculino","Lima",,,,,,"hospital",1,1,"sepsis","obesidad",,37
+2020-03-28,2020-03-27,,64,"masculino","Lima","Hong Kong",,,,,"casa",,,,,,37
+2020-03-28,2020-03-27,,60,"femenino","Callao",,,,,,"hospital",1,1,"shock séptico",,,37
+2020-03-29,2020-03-27,,91,"masculino","Lima",,,,,,"hospital",,1,,"enfermedad renal crónica",,39
+2020-03-29,2020-03-28,,66,"femenino","Ancash",,,,,,"hospital",,1,,"obesidad mórbida",,39
+2020-03-30,2020-03-30,,63,"masculino","Loreto",,,,,,"hospital",,1,,"obesidad;diabetes;antecedentes de tuberculosis",,42
+2020-03-30,2020-03-29,,58,"femenino","Callao",,,,,,"hospital",,1,,"antecedentes de neumonía",,42
+2020-03-30,2020-03-30,,56,"masculino","Loreto",,,,,,"hospital",,,,,,42
+2020-03-30,2020-03-28,,81,"femenino","Lima",,,,,,"hospital",,1,"shock séptico","diabetes",,42
+2020-03-30,2020-03-29,2020-03-26,76,"femenino","Lima",,,,,,"hospital",,1,"antecedentes de HTA;desnutrición crónica",,,42
+2020-03-30,2020-03-29,2020-03-26,76,"femenino","Lima",,,,,,"hospital",,1,,,,42
+2020-03-31,2020-03-29,2020-03-29,26,"masculino","Callao",,,,,,"hospital",,1,,"obesidad;asma",,45
+2020-03-31,2020-03-29,2020-03-29,74,"femenino","Lima",,,,,,"hospital",,1,,"insuficiencia renal crónica;cirrosis hepática",,45
+2020-03-31,2020-03-30,,46,"masculino","Tumbes",,,,,,"casa",,1,,"lumbalgia;alto consumo del alcohol",,45
+2020-03-31,2020-03-30,2020-03-23,53,"masculino","Lima",,,,,,"hospital",,1,,,,45
+2020-03-31,2020-03-30,,60,"masculino","Lima",,,,,,"hospital",,1,"shock séptico",,,45
+2020-03-31,2020-03-31,,66,"masculino","San Martín",,,,,,"hospital",,1,,"diabetes",,45
+2020-04-01,2020-03-27,,75,"masculino","Lima",,,,,,"hospital",,1,,"hipertensión;enfermedad cerebro cardiovascular",,47
+2020-04-01,2020-03-29,,96,"masculino","Lima",,,,,,"hospital",,1,,,,47
+2020-04-01,2020-03-29,,83,"femenino","Lima",,,,,,"hospital",,1,,,,47
+2020-04-01,2020-03-29,,87,"masculino","Lima",,,,,,"hospital",,1,,"hipertensión;enfermedad cerebro cardiovascular",,47
+2020-04-01,2020-03-30,,59,"femenino","Lambayeque",,,,,,"hospital",,1,,"fibrosis pulmonar",,47
+2020-04-01,2020-03-30,,60,"masculino","Lima",,,,,,"hospital",,1,,"hipertensión;diabetes mellitus",,47
+2020-04-01,2020-03-31,,73,"masculino","Callao",,,,,,"hospital",,1,,,,47
+2020-04-01,2020-03-31,,68,"masculino","Lima",,,,,,"hospital",,1,,,,47
+2020-04-01,2020-03-29,,69,"femenino","Lambayeque",,,,,,"hospital",1,,,"hipertensión;diabetes mellitus",,48
+2020-04-01,2020-03-31,,68,"masculino","Lima",,,,,,"hospital",,1,,,,48
+2020-04-01,2020-03-31,,60,"masculino","Lima",,,,,,"hospital",,1,,,,48
+2020-04-01,2020-03-31,,63,"femenino","Lima",,,,,,"hospital",,1,,,,48
+2020-04-01,2020-03-31,,59,"masculino","Lima",,,,,,"hospital",,1,,,,48
+2020-04-01,2020-03-30,,26,"masculino","Lima",,,,,,"hospital",1,1,,,,48
+2020-04-01,2020-03-31,,89,"masculino","Arequipa",,,,,,"hospital",1,1,,,,48
+2020-04-01,2020-03-31,,59,"masculino","La Libertad",,,,,,"hospital",1,,,"diabetes mellitus;hemodializado",,48
+2020-04-01,2020-03-31,,65,"femenino","Lima",,,,,,"hospital",1,,,"obesidad;diabetes",,48
+2020-04-02,2020-03-30,,57,"masculino","Junín",,,,,,"hospital",1,1,,,,50
+2020-04-02,2020-03-31,,77,"masculino","Lima",,,,,,"hospital",1,1,,,,50
+2020-04-02,2020-04-01,,73,"femenino","Lima",,,,,,"hospital",,1,,,,50
+2020-04-02,2020-04-01,,58,"femenino","Tumbes",,,,,,"hospital",,1,"hipertensión arterial",,,50
+2020-04-02,2020-04-01,,73,"masculino","Lima",,,,,,"hospital",,1,,"diabetes mellitus;hipertensión arterial;insuficiencia renal",,50
+2020-04-02,2020-04-01,,60,"masculino","Lima",,,,,,"hospital",,1,"infección respiratoria aguda",,,50
+2020-04-02,2020-04-01,,65,"masculino","Lima",,,,,,"hospital",,1,"shock séptico",,,50
+2020-04-02,2020-04-01,,67,"masculino","Lima",,,,,,"hospital",,,"infección respiratoria aguda","obesidad",,50
