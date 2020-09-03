@@ -50,7 +50,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/covid-19-peru-data-con-ubigeos.csv","Data/covid-19-peru-fallecimientos.csv","Data/datasets_705821_1232537_covid19_peru_stats.csv","Data/owid-covid-data.csv","PeruAnalysis_files/bowser-1.9.3/bowser.min.js","PeruAnalysis_files/distill-2.2.21/template.v2.js","PeruAnalysis_files/jquery-1.11.3/jquery.min.js","PeruAnalysis_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/datasets_705821_1232537_covid19_peru_stats.csv","Data/owid-covid-data.csv","Data/Peru.jpg","PeruAnalysis_files/bowser-1.9.3/bowser.min.js","PeruAnalysis_files/distill-2.2.21/template.v2.js","PeruAnalysis_files/jquery-1.11.3/jquery.min.js","PeruAnalysis_files/kePrint-0.0.1/kePrint.js","PeruAnalysis_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1275,6 +1275,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1324,36 +1325,116 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-peru_stats &lt;- read_csv(&quot;Data/datasets_705821_1232537_covid19_peru_stats.csv&quot;)
-
-peru_stats &lt;- peru_stats %&gt;% mutate(month = month(date), 
-                     day = day(date), 
-                     week = week(date))</code></pre>
+<p><img src="Data/Peru.jpg" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-peru_covid &lt;- coronavirus %&gt;% dplyr::filter(country == &quot;Peru&quot;)
 
-peru_covid_longer &lt;- peru_covid %&gt;% pivot_wider(values_from = &quot;cases&quot;, names_from  = &quot;type&quot;)
-
-peru_covid_longer &lt;- peru_covid_longer %&gt;% mutate(month = month(date),
-                                                   day = day(date), 
-                                                  week = week(date))
-peru_covid_longer &lt;- peru_covid_longer %&gt;% dplyr::select(date, 
-                                   day,
-                                   month,
-                                   week, 
-                                   confirmed,
-                                   death, 
-                                   recovered) </code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-df &lt;- download_merged_data(cached = TRUE, silent = TRUE)
-df1 &lt;- download_wbank_data(cached = TRUE, silent = TRUE)
-df2 &lt;- download_google_cmr_data(cached = TRUE, silent = TRUE)
-df3 &lt;- download_owid_testing_data(cached = TRUE, silent = TRUE)</code></pre>
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 1: </span>Summary Statistics of Toatl COVID19 Cases in Peru
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+peru_stats_cases (N = 114)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mean (sd)
+</td>
+<td style="text-align:left;">
+39,947.39 <span class="math inline">\(\pm\)</span> 56,726.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median (Q1, Q3)
+</td>
+<td style="text-align:left;">
+7,183.50 (50.00, 66,734.00)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+min
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+max
+</td>
+<td style="text-align:left;">
+196515
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-6">Table 2: </span>Summary Statistics of Toatl COVID19 Cases in Peru
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+peru_stats_deaths (N = 114)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mean (sd)
+</td>
+<td style="text-align:left;">
+1,122.81 <span class="math inline">\(\pm\)</span> 1,595.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median (Q1, Q3)
+</td>
+<td style="text-align:left;">
+187.00 (0.00, 1,870.25)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+min
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+max
+</td>
+<td style="text-align:left;">
+196515
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -1362,6 +1443,15 @@ df3 &lt;- download_owid_testing_data(cached = TRUE, silent = TRUE)</code></pre>
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

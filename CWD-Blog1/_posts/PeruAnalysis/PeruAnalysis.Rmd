@@ -13,6 +13,13 @@ output:
     self_contained: false
 ---
 
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/Peru.jpg")
+```
+
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(readr)
@@ -23,11 +30,12 @@ library(lubridate)
 library(DT)
 library(tidycovid19)
 library(zoo)
+library(kableExtra)
+library(qwraps2)
 
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
 ```
-
 
 ```{r}
 peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
@@ -60,10 +68,40 @@ peru_covid_longer <- peru_covid_longer %>% dplyr::select(date,
                                    recovered) 
 ```
 
+```{r, fig.align='center'}
+peru_stats_cases <- as.data.frame(peru_stats)
+summary_statistics <-
+  list(
+    "Total Covid Cases in Peru" =
+      list(
+        "mean (sd)" = ~qwraps2::mean_sd(total_cases, na_rm = TRUE),
+        "median (Q1, Q3)" = ~qwraps2::median_iqr(total_cases, na_rm = TRUE),
+        "min" = ~min(total_cases, na.rm = TRUE),
+        "max" = ~max(total_cases, na.rm = TRUE)
+        ))
+ 
+summary_table(peru_stats_cases, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+```
+
+```{r, fig.align='center'}
+peru_stats_deaths <- as.data.frame(peru_stats)
+summary_statistics <-
+  list(
+    "Total Covid Cases in Peru" =
+      list(
+        "mean (sd)" = ~qwraps2::mean_sd(total_deaths, na_rm = TRUE),
+        "median (Q1, Q3)" = ~qwraps2::median_iqr(total_deaths, na_rm = TRUE),
+        "min" = ~min(total_cases, na.rm = TRUE),
+        "max" = ~max(total_cases, na.rm = TRUE)
+        ))
+ 
+summary_table(peru_stats_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+```
+
 ```{r}
-df <- download_merged_data(cached = TRUE, silent = TRUE)
-df1 <- download_wbank_data(cached = TRUE, silent = TRUE)
-df2 <- download_google_cmr_data(cached = TRUE, silent = TRUE)
-df3 <- download_owid_testing_data(cached = TRUE, silent = TRUE)
+DT::datatable(top_colleges, 
+              rownames = FALSE,
+              filter="top", 
+              options = list(pageLength = 5, scrollX=T))
 ```
 
