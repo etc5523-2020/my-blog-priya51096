@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(readr)
 library(dplyr)
 library(tidyverse)
@@ -29,7 +29,6 @@ library(zoo)
 ```
 
 
-
 ```{r}
 peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
 
@@ -37,7 +36,6 @@ peru_stats <- peru_stats %>% mutate(month = month(date),
                      day = day(date), 
                      week = week(date))
 ```
-
 
 ```{r}
 owid_covid_data <- read_csv("Data/owid-covid-data.csv")
