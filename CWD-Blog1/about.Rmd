@@ -1,22 +1,29 @@
 ---
 title: "Priya Ravindra Dingorkar"
 description: |
-  An Enthusiastic Engineering Graduate with Computer Engineering and Pursuing Masters in Data/Business Analytics from Monash University, Melbourne Australia. 
-  
-  Believes in God, Goals, Growing
-  
-  “Without big data, you are blind and deaf in the middle of a freeway.” – Geoffrey Moore
-  
-  I am developing my Management and Analytical skills in Creative problem solving, Business Data analysis, Business Data interpretation, Data management and Effective Decision Making. This Master’s degree is enhancing me with a great leadership combination of Technical, Management and Analytical skills.
-  
-  “The Goal is to turn Data into Information, and Information into Insight.” – Carly Fiorina 
+  An enthusiastic engineering graduate with specialization in Computer Engineering and a strong buisness analystics in the making with postive leadership skills and added influential communication skills
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r, fig.align='center', out.width = '72%'}
+```{r, fig.align='center', out.width = "50%"}
 knitr::include_graphics("Images/pic.jpeg")
 ```
 
+Hey Reader, 
+
+Many Thanks for your interest in my Blog. 
+
+“Without big data, you are blind and deaf in the middle of a freeway.” – Geoffrey Moore
+
+Believes in God, Goals, Growing
+  
+I am developing my Management and Analytic skills in Creative problem solving, Business Data analysis, Business Data interpretation, Data management and Effective Decision Making.
+
+If you have enjoyed reading my blog, let me know, feel free to drop out at [Twitter](https://twitter.com/DingorkarPriya) or [Linkedin](https://www.linkedin.com/in/priya-dingorkar/)
+
+If you have any suggestion, please a drop a message at the above mentioned link
+
+"The Goal is to turn Data into Information, and Information into Insight.” – Carly Fiorina 
