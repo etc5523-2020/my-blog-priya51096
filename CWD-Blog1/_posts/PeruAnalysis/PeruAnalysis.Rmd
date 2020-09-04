@@ -188,33 +188,71 @@ geom_bar(stat = "identity",fill="702961", alpha=.6, width=.4) + geom_smooth(se =
 
 
 ```{r, fig.align='center'}
-peru_stats_cases <- as.data.frame(peru_stats)
+peru_confirmed <- as.data.frame(peru_covid_longer)
 summary_statistics <-
   list(
     "Total Covid Cases in Peru" =
       list(
-        "mean (sd)" = ~qwraps2::mean_sd(total_cases, na_rm = TRUE),
-        "median (Q1, Q3)" = ~qwraps2::median_iqr(total_cases, na_rm = TRUE),
-        "min" = ~min(total_cases, na.rm = TRUE),
-        "max" = ~max(total_cases, na.rm = TRUE)
+        "mean (sd)" = ~qwraps2::mean_sd(confirmed, na_rm = TRUE),
+        "median (Q1, Q3)" = ~qwraps2::median_iqr(confirmed, na_rm = TRUE),
+        "min" = ~min(confirmed, na.rm = TRUE),
+        "max" = ~max(confirmed, na.rm = TRUE)
         ))
  
-t1 <- summary_table(peru_stats_cases, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+t1 <- summary_table(peru_confirmed, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped", "hover"), position = "float_left")
+t1
 ```
 
 ```{r, fig.align='center'}
-peru_stats_deaths <- as.data.frame(peru_stats)
+peru_deaths <- as.data.frame(peru_covid_longer)
 summary_statistics <-
   list(
     "Total Covid Cases in Peru" =
       list(
-        "mean (sd)" = ~qwraps2::mean_sd(total_deaths, na_rm = TRUE),
-        "median (Q1, Q3)" = ~qwraps2::median_iqr(total_deaths, na_rm = TRUE),
-        "min" = ~min(total_cases, na.rm = TRUE),
-        "max" = ~max(total_cases, na.rm = TRUE)
+        "mean (sd)" = ~qwraps2::mean_sd(death, na_rm = TRUE),
+        "median (Q1, Q3)" = ~qwraps2::median_iqr(death, na_rm = TRUE),
+        "min" = ~min(death, na.rm = TRUE),
+        "max" = ~max(death, na.rm = TRUE)
         ))
  
-t2 <- summary_table(peru_stats_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+t2 <- summary_table(peru_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"), position = "float_right")
+t2
+```
+
+```{r, fig.align='center'}
+peru_recover <- as.data.frame(peru_covid_longer)
+summary_statistics <-
+  list(
+    "Total Covid Cases in Peru" =
+      list(
+        "mean (sd)" = ~qwraps2::mean_sd(recovered, na_rm = TRUE),
+        "median (Q1, Q3)" = ~qwraps2::median_iqr(recovered, na_rm = TRUE),
+        "min" = ~min(recovered, na.rm = TRUE),
+        "max" = ~max(recovered, na.rm = TRUE)
+        ))
+ 
+t3 <- summary_table(peru_recover, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"), position = "float_left")
+t3
+```
+
+```{r, fig.align='center'}
+peru_tests <- as.data.frame(df)
+summary_statistics <-
+  list(
+    "Total Covid Cases in Peru" =
+      list(
+        "mean (sd)" = ~qwraps2::mean_sd(total_tests, na_rm = TRUE),
+        "median (Q1, Q3)" = ~qwraps2::median_iqr(total_tests, na_rm = TRUE),
+        "min" = ~min(total_tests, na.rm = TRUE),
+        "max" = ~max(total_tests, na.rm = TRUE)
+        ))
+ 
+t4 <- summary_table(peru_tests, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"), position = "float_right")
+t4
+```
+
+```{r, warning=FALSE}
+list(t1, t2, t3, t4)
 ```
 
 
