@@ -153,7 +153,7 @@ On careful observation in figure \@ref(fig:ddrr), we notice that when the number
 
 On top of that in our research study we saw that the, there are many explanations why the death cases and confirmed cases have not succeeded in spite of great measure by officials of the countries. The fundamental socioeconomic problems of the in this country, due to inadequate living conditions, not good enough medical facilities, poor income levels worsen thus weakening of social distances and health related initiatives in this developing country. Also, the economy levels had already fallen in Peru, due to first held long lockdown and this all feared the public, and the residents of Peru and their living conditions forced them to join back to work, in order to feed their families, which in addition lead to exploitation of the law passed by the national cabinet of Peru.
 
-## Weekly Confirmed, Tested, Death and Recovered
+## Weekly Confirmed, Tested, Deaths and Recovered
 
 ```{r, fig.align='center', fig.cap="Weekly Confirmed Cases of COVID-19"}
 c1 <- peru_covid_longer %>% group_by(week) %>% summarise(max = max(confirmed)) %>% 
@@ -196,7 +196,7 @@ geom_bar(stat = "identity",fill="702961", alpha=.6, width=.4) + geom_smooth(se =
  xlab("Week") + ylab("Tested Cases")
 ```
 
-```{r, fig.align='center', fig.cap="Confirmed Cases and Testing"}
+```{r c1test1, fig.align='center', fig.cap="Confirmed Cases and Testing"}
 gridExtra::grid.arrange(c1, test1)
 ```
 
@@ -212,7 +212,7 @@ summary_statistics <-
         "max" = ~max(confirmed, na.rm = TRUE)
         ))
  
-t1 <- summary_table(peru_confirmed, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped", "hover"))
+t1 <- summary_table(peru_confirmed, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Confirmed Cases") %>% kableExtra::kable_styling(c("striped", "hover"))
 
 ```
 
@@ -229,7 +229,7 @@ summary_statistics <-
         "max" = ~max(death, na.rm = TRUE)
         ))
  
-t2 <- summary_table(peru_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+t2 <- summary_table(peru_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Deaths") %>% kableExtra::kable_styling(c("striped" , "hover"))
 
 ```
 
@@ -247,7 +247,7 @@ summary_statistics <-
         "max" = ~max(recovered, na.rm = TRUE)
         ))
  
-t3 <- summary_table(peru_recover, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+t3 <- summary_table(peru_recover, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Recoverey") %>% kableExtra::kable_styling(c("striped" , "hover"))
 
 ```
 
@@ -263,7 +263,7 @@ summary_statistics <-
         "max" = ~max(total_tests, na.rm = TRUE)
         ))
  
-t4 <- summary_table(peru_tests, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+t4 <- summary_table(peru_tests, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Testing") %>% kableExtra::kable_styling(c("striped" , "hover"))
 
 ```
 
@@ -272,9 +272,25 @@ t1
 ```
 
 ```{r, fig.align='center'}
+t4
+```
+
+Statistical understanding helps you to use the best approach to interpret the results, use the correct analyses and present the findings effectively, statistics is a critical mechanism behind how to make and forecast evidence-based decisions.
+
+In the figure \@ref(fig:c1test1) tell us details about the positive cases of covid in Peru in proportion to the rates of testing in different weeks across the region. In Peru, the positive cases initially showed a slow steady upward trend and then we see a sudden spikes where the cases are rising tremendously and now hopefully display a downward graph in the future. The testing data is extremely appreciable and we see more testing taking place week after week. It is very, fantastic to see an upward trend in Peru 's testing graph.
+
+Furthermore, looking at the Summary Tables, we infer around 2,910 to 3,340 positive case dispersion index. In addition, there are 25% to 75% of cases, ranging from 1 to 4300 (approx). For Peru the highest positive case record is 21358. The research overview table for the test results, really perspective of great positivism in me and figures are to be something extremely proud of. The cumulative test performed in Peru is 8,38,98,416.
+
+
+```{r, fig.align='center', fig.cap="Weekly Deaths and Recovery"}
+gridExtra::grid.arrange(d1, r1)
+```
+
+```{r, fig.align='center'}
 t2
 ```
 
-
-
+```{r, fig.align='center'}
+t3
+```
 
