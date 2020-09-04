@@ -29,6 +29,8 @@ library(zoo)
 library(kableExtra)
 library(qwraps2)
 library(ggplot2)
+library(hrbrthemes)
+library(plotly)
 
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
@@ -47,61 +49,6 @@ In this Blog, we will focus our discuss to COVID-19 and its impact in Peru. The 
 ## Overview of the Virus in Peru
 
 ```{r}
-peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
-
-peru_stats <- peru_stats %>% mutate(month = month(date), 
-                     day = day(date), 
-                     week = week(date))
-
-owid_covid_data <- read_csv("Data/owid-covid-data.csv")
-
-peru_owid <- owid_covid_data %>% dplyr::filter(iso_code == "PER")
-```
-
-```{r, fig.align='center', fig.cap= "OverView of COVID-19 Cases & Deaths in Peru"}
-options(scipen = 99)
-library(ggplot2)
-theme_set(theme_classic())
-
-
-plot1 <- ggplot(peru_owid, aes(x=date)) + scale_x_date(date_labels = "%m-%Y") + 
-  geom_line(aes(y=total_cases)) + xlab("Months") + ylab("Confirmed Cases") + scale_y_log10()
-
-plot2 <- ggplot(peru_owid, aes(x=date)) + scale_x_date(date_labels = "%m-%Y") +
-  geom_line(aes(y=total_deaths)) + xlab("Months") + ylab("Death Cases") + scale_y_log10()
-
-gridExtra::grid.arrange(plot1, plot2)
-```
-
-In Figure 2, we have witnessed the tremendously increasing covid-19 cases in Peru. Unfortunately, as mentioned earlier, Peru was on of the first countries, to operate the lockdown but despite of months of long mandatory lockdown and a night-time curfew, infections have jumped in Peru.
-
-Lets us fi
-
-```{r, fig.align='center', fig.cap="Information of the Total Cases and Deaths"}
-
-table_for_dt <- peru_owid  %>% mutate(month = month(date),
-                                                   day = day(date), 
-                                                  week = week(date)) %>% 
-  dplyr::select(date, day, week, month, 
-                total_cases,  
-                total_deaths)
-  
-DT::datatable(table_for_dt, 
-              rownames = FALSE,
-              filter="top", 
-              options = list(pageLength = 5, scrollX=T))
-```
-
-
-
-
-
-```{r}
-owid_covid_data <- read_csv("Data/owid-covid-data.csv")
-peru_owid <- owid_covid_data %>% dplyr::filter(iso_code == "PER")
-```
-
-```{r}
 peru_covid <- coronavirus %>% dplyr::filter(country == "Peru")
 
 peru_covid_longer <- peru_covid %>% pivot_wider(values_from = "cases", names_from  = "type")
@@ -118,6 +65,128 @@ peru_covid_longer <- peru_covid_longer %>% dplyr::select(date,
                                    recovered) 
 ```
 
+
+```{r}
+peru_stats <- read_csv("Data/datasets_705821_1232537_covid19_peru_stats.csv")
+
+peru_stats <- peru_stats %>% mutate(month = month(date), 
+                     day = day(date), 
+                     week = week(date))
+
+owid_covid_data <- read_csv("Data/owid-covid-data.csv")
+
+peru_owid <- owid_covid_data %>% dplyr::filter(iso_code == "PER")
+```
+
+```{r ccbb, fig.align='center', fig.cap= "OverView of COVID-19 Cases & Deaths in Peru"}
+options(scipen = 99)
+library(ggplot2)
+theme_set(theme_classic())
+
+
+plot1 <- ggplot(peru_stats, aes(x=date)) + scale_x_date(date_labels = "%m-%Y") + 
+  geom_line(aes(y=total_cases)) + xlab("Months") + ylab("Confirmed Cases") + scale_y_log10()
+
+plot2 <- ggplot(peru_stats, aes(x=date)) + scale_x_date(date_labels = "%m-%Y") +
+  geom_line(aes(y=total_deaths)) + xlab("Months") + ylab("Death Cases") + scale_y_log10()
+
+gridExtra::grid.arrange(plot1, plot2)
+```
+
+In Figure \@ref(fig:ccbb), we have witnessed the tremendously increasing covid-19 cases in Peru. Unfortunately, as mentioned earlier, inspite of the fact that Peru was on of the first countries, to operate the lockdown, months of long mandatory lockdown and a night-time curfew, infections have still jumped in Peru.
+
+The table below, provides statistics on the total number of reported positive cases of covid-19 and the total number of deaths on that specific day. These table provide us with details on the date when we found the highest number of incidents, when the rate of death increased in Peru. The simplest way to use the table is to retain information for total cases and total death in desired dates the user wants to know. Kindly note that the initial period, of the covid-19 that is the months, there were zero cases coming up in Peru and hence the you might see, a blank row for this.
+
+```{r ttcc, fig.align='center', fig.cap="Information of the Total Cases and Deaths"}
+
+table_for_dt <- peru_owid  %>% mutate(month = month(date),
+                                                   day = day(date), 
+                                                  week = week(date)) %>% 
+dplyr::select(date, day, week, month, 
+                total_cases,  
+                total_deaths)
+  
+DT::datatable(table_for_dt, 
+              rownames = FALSE,
+              filter="top", 
+              options = list(pageLength = 5, scrollX=T))
+```
+
+## Did the lockdown in Peru prove to be Effective ?
+
+Peru is one of the hardest affected covid-19 countries in the world, with the highest rates of over-mortality. Peru, by the end of June, had put its first lockdown starting from 16 March. This lockdown took place the first time and was one of the longest lockdowns. 
+In the figure \@ref(fig:ddrr), we can see the regulated environment of covid-19 in Peru during the days of lockdown when the rate of of deaths was lower and the recovery was just acceptable.
+
+In the figure \@ref(fig:ddrr), sadly we infer that that the deaths rates of Peru have touched 4000 and above, The death rate graph,  proves to be bi modal, as we can clearly notice two peaks in the months August and September, both exceeding the rate of mortality with 3000 and more. On the other hand, on taking a closer view at the recovered rate of covid-19 patients, we infer that, the graph is multi modal, which determines that the recovery rate in Peru is unstable and we witness quite fluctuating rate of recovery in Peru.
+
+```{r ddrr, fig.align='center', fig.cap="Death Rate and Recovered Rate in Peru"}
+deathplot <- peru_covid_longer %>% 
+  ggplot( aes(x = date, y = death)) + scale_x_date(date_labels = "%m-%Y") + geom_smooth()+
+    geom_line() + xlab("Months") + ylab("Deaths") +
+    theme(legend.position="none") +
+    theme_ipsum() +
+    theme(legend.position="none")
+
+recoveredplot <- peru_covid_longer %>% 
+  ggplot( aes(x = date, y = recovered)) + scale_x_date(date_labels = "%m-%Y") + geom_smooth()+
+    geom_line() + xlab("Months") + ylab("Confirmed") +
+    theme(legend.position="none") +
+    theme_ipsum() +
+    theme(legend.position="none")
+
+gridExtra::grid.arrange(deathplot, recoveredplot)
+```
+
+This is the exact time, when the government officials of Peru had decided to lift up, the lockdown in the various stages. The implications of these were that we recorded highest numbers of death cases in Peru. On the increased mortality rates, the government authorities of Peru, once again out the country into an state of emergency, thus making masks and glove a regular part of life.
+
+On top of that, study we saw that the, there are many explanations why the death cases and confirmed cases have not succeeded in spite of great measure by officials of the countries. The fundamental socioeconomic problems of the world due to inadequate living conditions worsen thus weakening of social distances and health related initiatives.
+
+## Weekly Confirmed, Death, Recovered and Testing
+
+```{r, fig.align='center', fig.cap="Weekly Confirmed Cases of COVID-19"}
+peru_covid_longer %>% group_by(week) %>% summarise(max = max(confirmed)) %>% 
+  ggplot(aes(x = week, y = max)) +
+geom_bar(stat = "identity",fill="#f68060", alpha=.6, width=.4) + geom_smooth(se = F) +
+ theme_minimal() +  
+   theme(plot.title = element_text(hjust = 0.5, lineheight = 0.8, face ="bold")) +
+ xlab("Week") + ylab("Confirmed Cases")
+    
+    
+```
+
+
+```{r, fig.align='center', fig.cap="Weekly Deaths Cases of COVID-19"}
+peru_covid_longer %>% group_by(week) %>% summarise(max = max(death)) %>% 
+  ggplot(aes(x = week, y = max)) +
+geom_bar(stat = "identity",fill="#228B22", alpha=.6, width=.4) + geom_smooth(se = F) +
+ theme_minimal() +  
+   theme(plot.title = element_text(hjust = 0.5, lineheight = 0.8, face ="bold")) +
+ xlab("Week") + ylab("Death Cases")
+    
+    
+```
+
+```{r, fig.align='center', fig.cap="Weekly Recoverey of COVID-19"}
+peru_covid_longer %>% group_by(week) %>% summarise(max = max(recovered)) %>% 
+  ggplot(aes(x = week, y = max)) +
+geom_bar(stat = "identity",fill="#0d4762", alpha=.6, width=.4) + geom_smooth(se = F) +
+ theme_minimal() +  
+   theme(plot.title = element_text(hjust = 0.5, lineheight = 0.8, face ="bold")) +
+ xlab("Week") + ylab("Recovered Cases")
+```
+
+```{r, fig.align='center', fig.cap="Testing of COVID-19"}
+df <- download_owid_testing_data(cached = TRUE, silent = TRUE)
+
+df %>% mutate(week= week(date)) %>% group_by(week) %>% summarise(max = max(total_tests)) %>% ggplot(aes(x = week, y = max)) +
+geom_bar(stat = "identity",fill="702961", alpha=.6, width=.4) + geom_smooth(se = F) +
+ theme_minimal() +  
+   theme(plot.title = element_text(hjust = 0.5, lineheight = 0.8, face ="bold")) +
+ xlab("Week") + ylab("Tested Cases")
+```
+
+
+
 ```{r, fig.align='center'}
 peru_stats_cases <- as.data.frame(peru_stats)
 summary_statistics <-
@@ -130,7 +199,7 @@ summary_statistics <-
         "max" = ~max(total_cases, na.rm = TRUE)
         ))
  
-summary_table(peru_stats_cases, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
+t1 <- summary_table(peru_stats_cases, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
 ```
 
 ```{r, fig.align='center'}
@@ -145,21 +214,10 @@ summary_statistics <-
         "max" = ~max(total_cases, na.rm = TRUE)
         ))
  
-summary_table(peru_stats_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
-```
-
-```{r}
-
-DT::datatable(peru_covid_longer, 
-              rownames = FALSE,
-              filter="top", 
-              options = list(pageLength = 5, scrollX=T))
+t2 <- summary_table(peru_stats_deaths, summary_statistics) %>% kableExtra::kable(caption = "Summary Statistics of Total COVID19 Cases in Peru") %>% kableExtra::kable_styling(c("striped" , "hover"))
 ```
 
 
-```{r}
- peru_covid_longer %>% ggplot(aes(month, death)) + geom_col()
-```
 
 
 
