@@ -1,13 +1,13 @@
 ---
 title: "Covid 19-Scenario in Sverige"
 description: |
-  Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. One thing that is certain is that adjusting . Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.
+  Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.
 author:
   - name: Priya Ravindra Dingorkar
     url: https://www.linkedin.com/in/priya-dingorkar
     affiliation: Master's of Buisness Analytics, Monash University 
     affiliation_url: https://www.monash.edu/
-date: 09-04-2020
+date: 17-09-2020
 output:
   distill::distill_article:
     self_contained: false
@@ -137,16 +137,11 @@ Swedish Prime Minister Stefan Löfven urged each person to take responsibility f
 
 So we're correcting the point we made above, and we have to give full credit to the Swedish Republicans, that they've written history in this pandemic, and that Sweden, being the only country, has managed to minimize both the reported and the death toll of covid-19 cases in the country. Woah!! Sweden.
 
-## 
+## Counties of Sweden, the virus ruled in Sweden.
 
-```{r}
-library(readr)
-library(dplyr)
-owid_covid_data <- read_csv("Data/owid-covid-data.csv")
-swed_data <- owid_covid_data %>% dplyr::filter(iso_code == "SWE")
-```
+After no lock-down impact in Sweden out of interest, certainly forces to know more about which counties in Sweden have been adversely affected in Sweden, and which counties have seen a few cases of covid-19 density in this scandinavian nation.
 
-```{r}
+```{r dens, fig.align='center', fig.cap="Density of COVID-19 in Sweden Counties"}
 library(readr)
 library(leaflet)
 library(htmltools)
@@ -161,14 +156,108 @@ kag_cc <- kag_cc %>% dplyr::select("Display_Name",
                          "Region_Total",
                          "Region_Deaths")
 
+labs <- lapply(seq(nrow(kag_cc)), function(i) {
+  paste0( kag_cc[i, "Display_Name"], ', ', 
+          kag_cc[i, "Population"],'</p><p>', 
+         kag_cc[i, "Region_Total"], '</p>' ) })
+
 leaflet(kag_cc) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
       addCircleMarkers(lat = ~Lat, lng  = ~Long, 
                        radius = kag_cc$Region_Total/450, 
-                       label = ~htmlEscape(kag_cc$Display_Name)
+                       label = lapply(labs, htmltools::HTML)
                        )
 
 ```
+
+In the figure \@ref(fig:dens), allows us to play with its graphics, to the public who do not have much knowledge of the different counties in Sweden, the hover choice over the map graph, gives you the name of that specific county, corresponding you will also know about the population of that county. In addition, you are also given the total number of reported cases in that area. The size of the circle shown on the map makes you infer how adversely affected the county is by the virus of the covid-19. 
+
+On close observation, we will all conclude that Stockholm and Västra Götaland have been the hardest hit area in Sweden. But we're still going to have to look at the demographics of these counties. Keep that in mind, the interactive table below, which will allow us to have the most adverse effect on the county in Sweden.
+
+```{r table-pos, fig.align='center',fig.cap="Sweden Counties & their COVID-19 Positive Percentage"}
+library(dplyr)
+
+prop_kag_cc <- kag_cc %>% 
+  dplyr::mutate(Percentage = (Region_Total/Population)*100)
+
+prop_kag_cc <- prop_kag_cc %>% dplyr::select("Display_Name", "Percentage")
+
+prop_kag_cc <- prop_kag_cc %>% rename("County" = "Display_Name") %>% 
+  rename("Percentage of COVID-19 Positive" = "Percentage")
+
+DT::datatable(prop_kag_cc, 
+              rownames = FALSE,
+              filter="top", 
+              options = list(pageLength = 5, scrollX=T))
+```
+
+## Death in the counties of Sweden, which saw more Postives of COVID-19
+
+We have seen the area of Sweden with the highest reported cases in the interactive table above, and we have seen a few regions where covid-19 was adversely affected. In the further research, we have seen that counties, Gävleborg, Jönköping, Stockholm, Uppsala, Västmanland and Västra Götaland have seen more covid-19 positive cases than the other counties. Let's try to figure out which of the affected counties had the most death rate.
+
+
+```{r death, fig.align='center', fig.cap="Counties Death Rate, with Highest Confirmed Cases"}
+library(ggplot2)
+library(leaflet)
+library(htmltools)
+library(plotly)
+
+county_info <- prop_kag_cc %>% dplyr::filter(prop_kag_cc$`Percentage of COVID-19 Positive` > 0.8)
+
+acinfo <- kag_cc %>% dplyr::filter(Display_Name %in%
+c("Gävleborg" , "Jönköping", "Stockholm" , "Uppsala" , "Västmanland" , "Västra Götaland"))
+
+d <- acinfo %>%
+  arrange(Region_Deaths) %>%    
+  mutate(Display_Name=factor(Display_Name, levels=Display_Name)) %>%   
+  ggplot(aes(x=Display_Name, y=Region_Deaths)) +
+    geom_segment( aes(xend=Display_Name, yend=0)) +
+    geom_point( size=4, color="orange") +
+    coord_flip() +
+    theme_bw() +
+    xlab("")
+
+ggplotly(d)
+```
+
+In the figure \@ref(fig:death) help us conclude that despite the fact that certain counties have a greater population, Stockholm, we are witnessing that Stockholm has the highest number of total deaths in Sweden, followed by Vastra Gotaland. The hover choice tells us the total number of total deaths in that specific county. As our analysis indicates that a lockout has not been enforced, we can also conclude that the Stockholm citizen may not have complied with the prescribed rules compared to the other counties. Overall , we conclude that Sweden has been successful despite not implementing a lockdown. Getting the COVID-19 world in full control.
+
+## Sweden needs to be Praised !!!
+
+The Swedes do not need the police to step into train wagons, streets or restaurants; they practice social distancing on their own. The remarkable fact remains that the death rate in Sweden is not as high as in other nations. The way Sweden has functions without the lockdown is absolutely fabulous, which proves that, Swedish virologists and politicians decision to trust the population has proved completely positive. The idea that it was better to trust people and allow them to monitor their social behavior themselves has really worked in Sweden and we must completely give full credit to the residents of Sweden.
+
+Stay tuned for many more such fun analysis and great insights! Keep watching out the link :) 
+
+# Reference
+
+[1] Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686,
+https://doi.org/10.21105/joss.01686
+  
+[2] Hadley Wickham, Jim Hester and Romain Francois (2018). readr: Read Rectangular Text Data. R
+package version 1.3.1. https://CRAN.R-project.org/package=readr
+
+[3] Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2020). dplyr: A Grammar of Data
+Manipulation. R package version 1.0.1. https://CRAN.R-project.org/package=dplyr
+
+[4] Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with lubridate. Journal of
+Statistical Software, 40(3), 1-25. URL http://www.jstatsoft.org/v40/i03/.
+
+[5] Yihui Xie, Joe Cheng and Xianying Tan (2020). DT: A Wrapper of the JavaScript Library
+'DataTables'. R package version 0.15. https://CRAN.R-project.org/package=DT 
+
+[6] Thomas Lin Pedersen and David Robinson (2020). gganimate: A Grammar of Animated
+  Graphics. R package version 1.0.6. https://CRAN.R-project.org/package=gganimatev
+
+[7] Jeroen Ooms (2018). gifski: Highest Quality GIF Encoder. R package version 0.8.6.
+  https://CRAN.R-project.org/package=gifski
+  
+[8] Joe Cheng, Bhaskar Karambelkar and Yihui Xie (2019). leaflet: Create Interactive
+  Web Maps with the JavaScript 'Leaflet' Library. R package version 2.0.3.
+  https://CRAN.R-project.org/package=leaflet
+
+[9] Joe Cheng, Carson Sievert, Winston Chang, Yihui Xie and Jeff Allen (2020).
+  htmltools: Tools for HTML. R package version 0.5.0.
+  https://CRAN.R-project.org/package=htmltools
 
 
 

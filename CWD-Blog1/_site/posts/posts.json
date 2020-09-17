@@ -18,7 +18,7 @@
   {
     "path": "posts/SwedenAnalysis/",
     "title": "Covid 19-Scenario in Sverige",
-    "description": "Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. One thing that is certain is that adjusting . Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.",
+    "description": "Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.",
     "author": [
       {
         "name": "Priya Ravindra Dingorkar",
@@ -28,7 +28,7 @@
     "date": "2020-09-04",
     "categories": [],
     "preview": "posts/SwedenAnalysis/Data/Sweden.jpg",
-    "last_modified": "2020-09-17T19:07:11+10:00",
+    "last_modified": "2020-09-17T23:07:36+10:00",
     "input_file": "SwedenAnalysis.utf8.md"
   }
 ]
