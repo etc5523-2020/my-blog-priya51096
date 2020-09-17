@@ -14,5 +14,21 @@
     "preview": "posts/PeruAnalysis/Data/Peru.jpg",
     "last_modified": "2020-09-04T20:44:30+10:00",
     "input_file": {}
+  },
+  {
+    "path": "posts/SwedenAnalysis/",
+    "title": "Covid 19-Scenario in Sverige",
+    "description": "Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. One thing that is certain is that adjusting . Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.",
+    "author": [
+      {
+        "name": "Priya Ravindra Dingorkar",
+        "url": "https://www.linkedin.com/in/priya-dingorkar"
+      }
+    ],
+    "date": "2020-09-04",
+    "categories": [],
+    "preview": "posts/SwedenAnalysis/Data/Sweden.jpg",
+    "last_modified": "2020-09-17T15:10:00+10:00",
+    "input_file": "SwedenAnalysis.utf8.md"
   }
 ]

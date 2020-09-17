@@ -1,0 +1,196 @@
+---
+title: "Covid 19-Scenario in Sverige"
+description: |
+  Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. One thing that is certain is that adjusting . Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.
+author:
+  - name: Priya Ravindra Dingorkar
+    url: https://www.linkedin.com/in/priya-dingorkar
+    affiliation: Master's of Buisness Analytics, Monash University 
+    affiliation_url: https://www.monash.edu/
+date: 09-04-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/Sweden.jpg")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(readr)
+library(dplyr)
+library(tidyverse)
+library(coronavirus)
+library(lubridate)
+library(DT)
+library(tidycovid19)
+library(zoo)
+library(kableExtra)
+library(qwraps2)
+library(ggplot2)
+library(hrbrthemes)
+library(plotly)
+```
+
+```{r}
+owid_covid_data <- read_csv("Data/owid-covid-data.csv")
+swed_data <- owid_covid_data %>% dplyr::filter(iso_code == "SWE")
+
+```
+
+```{r}
+library(readr)
+library(leaflet)
+library(htmltools)
+kag_cc<- read_csv("Data/time_series_confimed-confirmed.csv")
+
+kagcc_new <- kag_cc %>% dplyr::select("Display_Name",
+                         "Population" ,
+                         "Lat",
+                         "Long",
+                         "Region_Total",
+                         "Region_Deaths")
+
+kagcc_new <- kagcc_new %>% dplyr::mutate(ncvo_dens = kagcc_new$Region_Total/kagcc_new$Population*100)
+
+leaflet(kagcc) %>% 
+      addProviderTiles("CartoDB.Positron") %>% 
+      addCircleMarkers(lat = ~Lat, lng  = ~Long, 
+                       radius = kagcc$Region_Total/450, 
+                       label = ~htmlEscape(kagcc$Display_Name)
+                       )
+
+```
+
+
+
+```{r}
+swed_covid <- coronavirus %>% dplyr::filter(country == "Sweden")
+
+swed_covid_longer <- swed_covid %>% pivot_wider(values_from = "cases", names_from  = "type")
+
+swed_covid_longer <- swed_covid_longer %>% mutate(month = month(date),
+                                                   day = day(date), 
+                                                  week = week(date))
+swed_covid_longer <- swed_covid_longer %>% dplyr::select(date, 
+                                   day,
+                                   month,
+                                   week, 
+                                   confirmed,
+                                   death, 
+                                   recovered) 
+```
+
+## Get Tested Today, Stop the Spread, Stay Together, Stay Stronger
+
+Coronavirus was first born in Wuhan, China in the first week of December, this viruses causes problems with the respiratory system, thus infecting the body with mild to more severe diseases, this virus is easily contagious, close to contact with an infected individual. Good hand hygiene and cleanliness etiquette, social distancing and of course, the mask, also called the new normal of today are one of the most effective steps to help prevent the virus from entering your system.
+
+The signs of this deadly virus are shown in the figure below, even if you encounter mild symptoms that are being examined today, get tested and help stop this virus from spreading indeed spread more happiness around us.
+
+```{r, fig.cap= "Symptoms of COVID-19", fig.align='center', out.width="10%"}
+knitr::include_graphics("Data/sym.jpg")
+```
+
+```{r}
+library(dygraphs)
+library(xts)          
+library(tidyverse)
+library(lubridate)
+
+data <- swed_covid_longer
+
+data$date <- ymd(data$date)
+
+plot <- xts(x = data$confirmed, order.by = data$date)
+
+p <- dygraph(plot) %>%
+  dyOptions(labelsUTC = TRUE, 
+            fillGraph=TRUE, 
+            fillAlpha=0.1, 
+            drawGrid = FALSE, 
+            colors="#00FFFF") %>%
+  dyRangeSelector() %>%
+  dyCrosshair(direction = "vertical") %>%
+  dyHighlight(highlightCircleSize = 5, 
+              highlightSeriesBackgroundAlpha = 0.2, 
+              hideOnMouseOut = FALSE)  %>%
+  dyRoller(rollPeriod = 1)
+
+p
+```
+
+```{r}
+# libraries:
+library(ggplot2)
+library(gganimate)
+library(gifski)
+library(ggplot2)
+library(gganimate)
+library(babynames)
+library(hrbrthemes)
+library(viridis)
+
+
+
+swed_covid <- swed_covid %>% mutate(month = month(date),
+       day = day(date), 
+       week = week(date))
+
+
+
+myPlot <- ggplot(swed_covid, aes(x=date, y=cases, group=type, color=type)) +
+  geom_line() +
+  #geom_point() +
+  scale_color_viridis(discrete = TRUE) + 
+  ggtitle("Popularity of American names in the previous 30 years") +
+  theme_ipsum() +
+  ylab("Number of babies born") +
+  transition_reveal(week)
+
+
+
+animate(myPlot, 
+        fps = 18, 
+        renderer = gifski_renderer())
+anim_save("output.gif")
+```
+
+
+
+```{r}
+library("COVID19")
+library(tidyverse)
+library(DT)
+data  <- covid19("SWE")
+covid19_swe_state <- covid19("SWE", level  = 2)
+
+covid19_swe_state <- covid19_swe_state %>% dplyr::select(
+  "date"   ,                            
+  "tests"   ,                            
+  "confirmed",                          
+  "recovered" ,   
+  "deaths"
+)
+covid19_swe_state %>% group_by(covid19_swe_state$administrative_area_level_2) %>% s
+summarise(mean = mean)
+```
+
+```{r}
+data  <- covid19("SWE")
+covid19_swe_state <- covid19("SWE", level  = 2)
+```
+
+
+## Data Sources
+
+It is through data collection that any firm makes quality and powerful informed decisions through further research. Data mining helps them to remain on top of developments, provide solutions to questions, and interpret new ideas to a great extent. In this blog I have used a combination of datasets and thus made, further analysis on the situation of covid-19 in Peru. The dataset, used have been obtained from [Kaggle, COVID -19 country data](https://www.kaggle.com/rajtulluri/covid19-country-data?select=covid19_peru_stats.csv). Another dataset that I found suitable for my analysis was taken from the coronavirus package, this provides the Johns Hopkins University CSSE dataset together with a dashboard owned by [Joachim Gassen - tidycovid19 package](https://github.com/joachim-gassen/tidycovid19). In addition I have also used the [Coronavirus Source Data by Hannah Ritchie](https://ourworldindata.org/coronavirus-source-data), this dataset, had the latest information of the covid-19 cases. Lets take a glimpse of a few datasets that I have used throughout the analysis process. Data variables are an important part in determining the visualization of the dataset, as well as the scope of the datasets, most variables in the dataset utilized are easy to follow and self explanatory. 
+
+
+
+
+
+
+
+
