@@ -1,5 +1,21 @@
 [
   {
+    "path": "posts/SwedenAnalysis/",
+    "title": "Covid 19-Scenario in Sverige",
+    "description": "Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.",
+    "author": [
+      {
+        "name": "Priya Ravindra Dingorkar",
+        "url": "https://www.linkedin.com/in/priya-dingorkar"
+      }
+    ],
+    "date": "2020-09-18",
+    "categories": [],
+    "preview": "posts/SwedenAnalysis/Data/Sweden.jpg",
+    "last_modified": "2020-09-18T23:14:27+10:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/PeruAnalysis/",
     "title": "Escenario COVID-19 en PERÚ",
     "description": "Covid-19 cases are growing unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that to adapt to change and we all know that change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.",
@@ -14,21 +30,5 @@
     "preview": "posts/PeruAnalysis/Data/Peru.jpg",
     "last_modified": "2020-09-04T20:44:30+10:00",
     "input_file": {}
-  },
-  {
-    "path": "posts/SwedenAnalysis/",
-    "title": "Covid 19-Scenario in Sverige",
-    "description": "Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.",
-    "author": [
-      {
-        "name": "Priya Ravindra Dingorkar",
-        "url": "https://www.linkedin.com/in/priya-dingorkar"
-      }
-    ],
-    "date": "2020-09-04",
-    "categories": [],
-    "preview": "posts/SwedenAnalysis/Data/Sweden.jpg",
-    "last_modified": "2020-09-17T23:07:36+10:00",
-    "input_file": "SwedenAnalysis.utf8.md"
   }
 ]

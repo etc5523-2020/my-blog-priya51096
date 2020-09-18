@@ -7,7 +7,7 @@ author:
     url: https://www.linkedin.com/in/priya-dingorkar
     affiliation: Master's of Buisness Analytics, Monash University 
     affiliation_url: https://www.monash.edu/
-date: 17-09-2020
+date: 2020-09-18
 output:
   distill::distill_article:
     self_contained: false
@@ -15,10 +15,24 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-library(coronavirus)
-library(tidyverse)
-library(dplyr)
 ```
+
+```{r}
+library(coronavirus)
+library(gifski)
+library(ggplot2)
+library(gganimate)
+library(hrbrthemes)
+library(viridis)
+library(dygraphs)
+library(tidyverse)
+library(lubridate)
+library(dplyr)
+library(leaflet)
+library(plotly)
+library(xts)  
+```
+
 
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("Data/Sweden.jpg")
@@ -36,15 +50,14 @@ knitr::include_graphics("Data/sym.jpg")
 
 ## Data Sources
 
-It is through data collection that any firm makes quality and powerful informed decisions through further research. Data mining helps them to remain on top of developments, provide solutions to questions, and interpret new ideas to a great extent. In this blog I have used a combination of datasets and thus made, further analysis on the situation of covid-19 in Peru. The dataset, used have been obtained from [Kaggle, COVID -19 country data](https://www.kaggle.com/rajtulluri/covid19-country-data?select=covid19_peru_stats.csv). Another dataset that I found suitable for my analysis was taken from the coronavirus package, this provides the Johns Hopkins University CSSE dataset together with a dashboard owned by [Joachim Gassen - tidycovid19 package](https://github.com/joachim-gassen/tidycovid19). In addition I have also used the [Coronavirus Source Data by Hannah Ritchie](https://ourworldindata.org/coronavirus-source-data), this dataset, had the latest information of the covid-19 cases. Lets take a glimpse of a few datasets that I have used throughout the analysis process. Data variables are an important part in determining the visualization of the dataset, as well as the scope of the datasets, most variables in the dataset utilized are easy to follow and self explanatory. 
+It is through data collection that any firm makes quality and powerful informed decisions through further research. Data mining helps them to remain on top of developments, provide solutions to questions, and interpret new ideas to a great extent. In this blog I have used a combination of datasets and thus made, further analysis on the situation of covid-19 in Sweden. The dataset, used have been obtained from [Kaggle, COVID -19 Sweden Data](https://www.kaggle.com/jannesggg/sweden-covid19-dataset). Another dataset that I found suitable for my analysis was taken from the coronavirus package, this provides the Johns Hopkins University CSSE dataset together with a dashboard owned by [Joachim Gassen - tidycovid19 package](https://github.com/joachim-gassen/tidycovid19). In addition I have also used the [Coronavirus Source Data by Hannah Ritchie](https://ourworldindata.org/coronavirus-source-data), as this dataset, had the latest information of the covid-19 cases. 
 
 ## Overview of COVID-19 in Sweden
 
-The arrival of the virus was seen on 31 January 2020, a woman returning from Wuhan tested positive. Multiple travel linked clusters later began to appear in Sweden. Also already Community transmission in the Stockholm area had started. Unfortunately, Swedish people began losing their lives because of this deadly virus.
+The arrival of the virus was seen on 31 January 2020, a woman returning from Wuhan tested positive. Multiple travel linked clusters later began to appear in Sweden. Also already community transmission in the Stockholm area had started. Unfortunately, Swedish people began losing their lives because of this deadly virus.
 
 
 ```{r}
-library(lubridate)
 swed_covid <- coronavirus %>% dplyr::filter(country == "Sweden")
 
 swed_covid_longer <- swed_covid %>% pivot_wider(values_from = "cases", names_from  = "type")
@@ -54,18 +67,7 @@ swed_covid_longer <- swed_covid_longer %>% mutate(month = month(date),
                                                   week = week(date))
 ```
 
-```{r over-view, fig.align='center', fig.cap="Overview of the Confirmed Cases and Death Cases in Sweden" }
-# libraries:
-library(ggplot2)
-library(gganimate)
-library(gifski)
-library(ggplot2)
-library(gganimate)
-library(hrbrthemes)
-library(viridis)
-library(dplyr)
-
-
+```{r over-view, fig.align='center', fig.cap="Overview of the Confirmed Cases and Death Cases in Sweden"}
 
 swed_covid <- swed_covid %>% mutate(month = month(date),
        day = day(date), 
@@ -97,17 +99,11 @@ As we have seen in the figure \@ref(fig:over-view), the graph is multimodal and 
 
 
 ```{r in-deep, fig.align='center', fig.cap="In depth Insight of Positive Cases in Sweden"}
-library(dygraphs)
-library(xts)          
-library(tidyverse)
-library(lubridate)
-library(dplyr)
-
 data <- swed_covid_longer
 
 data$date <- ymd(data$date)
 
-plot <- xts(x = data$confirmed, order.by = data$date)
+plot <- xts(x = data$confirmed, order.by = unique(data$date))
 
 p <- dygraph(plot) %>%
   dyOptions(labelsUTC = TRUE, 
@@ -125,7 +121,7 @@ p <- dygraph(plot) %>%
 p
 ```
 
-Figure \@ref(fig:in-deep), is a very cool figure and allows us to play with its graphics, this figure still helps infer in depth awareness of the positive cases in Sweden. Initially, the introduction of this virus in February witnessed zero cases. The graph showed a large rise in the month of April, but Sweden managed this very well and got the situation under control. But just as we thought the environment was under control, the virus displayed a powerful contagious nature and witnessed a massive community transfer of positive cases in Sweden in the months of June and July.
+Figure \@ref(fig:in-deep), is a very cool figure and allows us to play with its graphics, this figure still helps infer in depth awareness of the positive cases in Sweden. Initially, the introduction of this virus in February witnessed zero cases. The graph showed a large rise in the month of April, but Sweden managed this very well and got the situation under control. But just as we thought the environment was under control, the virus displayed its powerful contagious nature and witnessed a massive community transfer of positive cases in Sweden in the months of June and July.
 
 Fortunately, the cases were once again brought under the control by the officials of the Sweden government. Wait !! What ??. Our research study tells us that Sweden is the only country in the world that has not had a lockdown. Yeah, you've read that correctly, Sweden has effectively managed to monitor the situation , without any lockdown.
 
@@ -142,11 +138,6 @@ So we're correcting the point we made above, and we have to give full credit to 
 After no lock-down impact in Sweden out of interest, certainly forces to know more about which counties in Sweden have been adversely affected in Sweden, and which counties have seen a few cases of covid-19 density in this scandinavian nation.
 
 ```{r dens, fig.align='center', fig.cap="Density of COVID-19 in Sweden Counties"}
-library(readr)
-library(leaflet)
-library(htmltools)
-library(dplyr)
-
 kag_cc <- read_csv("Data/time_series_confimed-confirmed.csv")
 
 kag_cc <- kag_cc %>% dplyr::select("Display_Name",
@@ -175,14 +166,12 @@ In the figure \@ref(fig:dens), allows us to play with its graphics, to the publi
 On close observation, we will all conclude that Stockholm and Västra Götaland have been the hardest hit area in Sweden. But we're still going to have to look at the demographics of these counties. Keep that in mind, the interactive table below, which will allow us to have the most adverse effect on the county in Sweden.
 
 ```{r table-pos, fig.align='center',fig.cap="Sweden Counties & their COVID-19 Positive Percentage"}
-library(dplyr)
-
 prop_kag_cc <- kag_cc %>% 
   dplyr::mutate(Percentage = (Region_Total/Population)*100)
 
 prop_kag_cc <- prop_kag_cc %>% dplyr::select("Display_Name", "Percentage")
 
-prop_kag_cc <- prop_kag_cc %>% rename("County" = "Display_Name") %>% 
+prop_kag_cc <- head(prop_kag_cc,20) %>% rename("County" = "Display_Name") %>% 
   rename("Percentage of COVID-19 Positive" = "Percentage")
 
 DT::datatable(prop_kag_cc, 
@@ -195,14 +184,7 @@ DT::datatable(prop_kag_cc,
 
 We have seen the area of Sweden with the highest reported cases in the interactive table above, and we have seen a few regions where covid-19 was adversely affected. In the further research, we have seen that counties, Gävleborg, Jönköping, Stockholm, Uppsala, Västmanland and Västra Götaland have seen more covid-19 positive cases than the other counties. Let's try to figure out which of the affected counties had the most death rate.
 
-
 ```{r death, fig.align='center', fig.cap="Counties Death Rate, with Highest Confirmed Cases"}
-library(ggplot2)
-library(leaflet)
-library(htmltools)
-library(plotly)
-
-county_info <- prop_kag_cc %>% dplyr::filter(prop_kag_cc$`Percentage of COVID-19 Positive` > 0.8)
 
 acinfo <- kag_cc %>% dplyr::filter(Display_Name %in%
 c("Gävleborg" , "Jönköping", "Stockholm" , "Uppsala" , "Västmanland" , "Västra Götaland"))
@@ -220,11 +202,12 @@ d <- acinfo %>%
 ggplotly(d)
 ```
 
+
 In the figure \@ref(fig:death) help us conclude that despite the fact that certain counties have a greater population, Stockholm, we are witnessing that Stockholm has the highest number of total deaths in Sweden, followed by Vastra Gotaland. The hover choice tells us the total number of total deaths in that specific county. As our analysis indicates that a lockout has not been enforced, we can also conclude that the Stockholm citizen may not have complied with the prescribed rules compared to the other counties. Overall , we conclude that Sweden has been successful despite not implementing a lockdown. Getting the COVID-19 world in full control.
 
 ## Sweden needs to be Praised !!!
 
-The Swedes do not need the police to step into train wagons, streets or restaurants; they practice social distancing on their own. The remarkable fact remains that the death rate in Sweden is not as high as in other nations. The way Sweden has functions without the lockdown is absolutely fabulous, which proves that, Swedish virologists and politicians decision to trust the population has proved completely positive. The idea that it was better to trust people and allow them to monitor their social behavior themselves has really worked in Sweden and we must completely give full credit to the residents of Sweden.
+The Swedes do not need the police to step into train wagons, streets or restaurants they practice social distancing on their own. The remarkable fact remains that the death rate in Sweden is not as high as in other nations. The way Sweden has functioned without the lockdown is absolutely fabulous, which proves that, Swedish virologists and politicians decision to trust the population has proved completely positive. The idea that it was better to trust people and allow them to monitor their social behavior themselves has really worked in Sweden and we must completely give full credit to the residents of Sweden.
 
 Stay tuned for many more such fun analysis and great insights! Keep watching out the link :) 
 
@@ -258,6 +241,7 @@ Statistical Software, 40(3), 1-25. URL http://www.jstatsoft.org/v40/i03/.
 [9] Joe Cheng, Carson Sievert, Winston Chang, Yihui Xie and Jeff Allen (2020).
   htmltools: Tools for HTML. R package version 0.5.0.
   https://CRAN.R-project.org/package=htmltools
+
 
 
 

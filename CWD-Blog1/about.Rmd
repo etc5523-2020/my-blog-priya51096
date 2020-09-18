@@ -1,7 +1,7 @@
 ---
 title: "Priya Ravindra Dingorkar"
 description: |
-  An enthusiastic engineering graduate with specialization in Computer Engineering and a strong buisness analystics in the making with postive leadership skills and added influential communication skills
+  An enthusiastic engineering graduate with specialization in Computer Engineering and a strong Business Analyst in the making with positive leadership skills and added influential communication skills.
 ---
 
 ```{r setup, include=FALSE}
