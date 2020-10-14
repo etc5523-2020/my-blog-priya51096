@@ -1,5 +1,21 @@
 [
   {
+    "path": "posts/Self-Reflection/",
+    "title": "Learning from Self-Reflection",
+    "description": "The willingness of humans to cultivate introspection and to make an effort to understand more about their actions, can be termed as human self-reflection. The secret to self-awareness it helps us to look rationally at our actions. In this blog, let us review, introspect and engage in the act of self reflection for the first ever shiny app I ever made in my life. ”What we perceive about ourselves is greatly a reflection of how we will end up living our lives.” – Stephen Richards",
+    "author": [
+      {
+        "name": "Priya Ravindra Dingorkar",
+        "url": "https://www.linkedin.com/in/priya-dingorkar"
+      }
+    ],
+    "date": "2020-10-16",
+    "categories": [],
+    "preview": "posts/Self-Reflection/Data/sf.jpg",
+    "last_modified": "2020-10-15T02:34:03+11:00",
+    "input_file": "Self-Reflection.utf8.md"
+  },
+  {
     "path": "posts/SwedenAnalysis/",
     "title": "Covid 19-Scenario in Sverige",
     "description": "Worldwide, Covid-19 cases are rising unrivalled, exceeding the daily numbers. Owing to COVID-19, in the last few months we have experienced an unprecedented change in our way of life and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Sweden, also called Sverige in the continent of Europe.",
