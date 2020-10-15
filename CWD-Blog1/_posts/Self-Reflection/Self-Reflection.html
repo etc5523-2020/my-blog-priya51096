@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/gif1.gif","Data/sf.jpg","Self-Reflection_files/bowser-1.9.3/bowser.min.js","Self-Reflection_files/distill-2.2.21/template.v2.js","Self-Reflection_files/jquery-1.11.3/jquery.min.js","Self-Reflection_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/gif1.gif","Data/gif2.gif","Data/gif3.gif","Data/gif4.gif","Data/gif5.gif","Data/sf.jpg","Data/Tab1.png","Data/Tab2.png","Data/Tab3.png","Self-Reflection_files/bowser-1.9.3/bowser.min.js","Self-Reflection_files/distill-2.2.21/template.v2.js","Self-Reflection_files/jquery-1.11.3/jquery.min.js","Self-Reflection_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -983,6 +983,55 @@
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="Data/gif1.gif" width="100%" style="display: block; margin: auto;" /></p>
 </div>
+<p><a href="">My shiny application</a> gives a overview of the newest change we all have adapted to in the recent few months, yes your right it is COVID-19. This pandemic has taught us life lessons and for me personally, has made me a better person as I have gained quite a few skills, this app being one of them. The applications has a few tabs and on playing around the app, you will find that one of the graph show you the waves of the confirmed, recovered and death in each country. We have further also gone in detail and studied about the positive cases in Australia and statistics of the cases each month in every country where coronavirus cases have been detected.</p>
+<h2 id="self-evaluation">Self Evaluation</h2>
+<p>Let us take a look at each tab of my shiny application and learn more about what went well, what points can be strengthened, some potential items that can be added, and also self-evaluate my application, which will assist all neophytes like me when developing the first app there, and I can enhance the standard of my job as well as in the future application I have created. Get Ready !! Teacher mode On !! Hope you have fun !!</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Data/gif3.gif" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<h3 id="overview-of-covid19-scenario-across-the-globe">Overview of COVID19 Scenario Across the Globe</h3>
+<p>The figure <a href="#fig:tab1">1</a> reflects my favorite section, my application’s landing page. In this application, you can see a date slider that allows the user to see the cases of recovery, confirmation and death of the different country where cases of COVID-19 have been found. The drop down below also helps you to see the various countries where you want to see an overview of how the selected country has been affected by COVID-19.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:tab1"></span>
+<img src="Data/Tab1.png" alt="Overview of COVID-19 across the Globe" width="900px" height="360px" />
+<p class="caption">
+Figure 1: Overview of COVID-19 across the Globe
+</p>
+</div>
+</div>
+<p>The best part of the page that went well for me and I think was pretty challenging for me to figure out was, when you click on the map, produced through leaflet you get labels of the countries, on clicking on these labels of the desired country the graph of the overview of COVID-19 changes dynamically, for the selected country and achieving this makes me feel really happy. There are few points that can be improved on this page, I think the layout of the application can be a bit more appealing than the present one as the user has to scroll down to view the rest of the functionality of the applications. I have tried my level best to reduce text and make it an user friendly application. One feature that I wanted to add but did not succeed in doing so was I wanted the size of the circle markers could have been directly proportional to the most affect country by COVID-19. On the whole this my favorite page of the application and I had great fun while making it.</p>
+<h3 id="australia-and-its-states">Australia and it’s States</h3>
+<p>Figure <a href="#fig:tab2">2</a> is the next tab in my application. I was also interested in learning more about Australia ’s positive cases as it is the present country of my residence and one of the successful countries with effective management of the COVID-19 cases here. This country’s data is very well structured and simple to use. The user can pick the desired state of Australia in this section of my application, where the user gets a bar chart of the COVID-19 positive cases in that state over the different months. In addition, if you click on one of the bar chart of any month the user has picked, you will be led to another chart that informs you all about the maximum number of recovered, hospitalized, COVID-19 patients that were on the ventilator on that clicked month and the maximum number of cases that were also in the ICU.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:tab2"></span>
+<img src="Data/Tab2.png" alt="Australia &amp; States" width="900px" height="360px" />
+<p class="caption">
+Figure 2: Australia &amp; States
+</p>
+</div>
+</div>
+<p>This page was a real challenge, because I have never used plotly::event data, it took me such a long time to incorporate this, but I eventually succeeded in doing the same. The development of the COVID-19 bar charts went pretty well, it was very easy to fetch the data for the highest count of the various cases from the dataset. The graphics of the graph over the clicked month are stuff I find that can be strengthened. For this, a statistical overview of the COVID-19 situation of the month you clicked would have been a better approach. Furthermore, I think I should have obtained the latitude and longitude and made a choropleth map rely on the positive cases. I also believe that the layout of this page can be better. Also the image looks a bit over stretched. One feature that I feel could have been added was instead of one drop down, we could have two drop down one for the country and the second one for the states/regions/counties of that country and this should have the graphs for positive cases and the monthly statistics for the selected month. I think I did not know during that time. I could have had set the limit on my sidebar panel. On the whole getting the event_data to work was really fun and an accomplishment in its own way !</p>
+<h3 id="worldwide-statistics">WorldWide Statistics</h3>
+<p>Statistical information allows the user to make inferences and study around the mean values of the data. Figure <a href="#fig:tab3">3</a> is the statistical section of the app. Here the user can select the country of his choice and find the average of the total cumulative cases each month. I feel this page is the one that requires the most improvement. I feel instead we can make a table of the top ten worst hit countries with COVID-19 and show the average cases with colorful horizontal bar charts.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:tab3"></span>
+<img src="Data/Tab3.png" alt="Montly Statistics of different Countries" width="900px" height="360px" />
+<p class="caption">
+Figure 3: Montly Statistics of different Countries
+</p>
+</div>
+</div>
+<p>Instead of cumulative cases each month I could have had used the lag function to display the individual count for each month and give it’s statistics. The concept of the DT table being new and making it work to shiny was until initally you understand what goes where. I think I could have also shown the percentage of population affect by COVID-19 if the population data was made available.</p>
+<h2 id="final-score---passedfail">Final Score - (Passed/Fail)</h2>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Data/gif4.gif" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<p>We have successfully looked into the entire app and see the areas of improvement in each section, Now it is time for the short overview of the things that went well, first a running app without errors is a tiny success. Getting the graphs to change on the different user choice are some of the fancy feature, which increases the user interactivity and thus makes the app more user friendly. Getting plotly::event_data was a challenge and I have successfully implemented it (small pride for it). A table that, that allows the user to select the country and the average cases per month are explained, working DT with shiny app is pretty appericated. The images added to each tab are better accurate and thus makes it more appealing</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Data/gif2.gif" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<p>We spoke about the alignment of the different in each graph, which means a little more research on how to place to the text correct and how to utilized the space in each tab is what requires a little bit more study. We also self-realized that on over engaging in the app that the visual of of the the graph would have been better. Certain features that should have been added in the app throughout the detailed discussion. A little discussion on how the existing the technology could be improve, reminds me of the endless errors RStudio gives us when we try to deploy the app. The version 4.0.0 of R seems to be obsolete to deploy an application. In addition I feel, they the leaflet package gives us multiple map when we totally zoom out and instead we could have just one layer of the same.</p>
+<h2 id="refernces">Refernces</h2>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
