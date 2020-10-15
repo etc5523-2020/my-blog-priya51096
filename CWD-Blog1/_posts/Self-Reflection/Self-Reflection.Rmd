@@ -20,3 +20,17 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("Data/sf.jpg")
 ```
+
+
+## Credits
+
+I sincerely thank Professor Dr. Emi Tanaka and Tutor Mitchell O'Hara-Wild for introducing us to this wonderful resource it is because of your collaborative efforts and great teaching, I am in the position to write this blog and create my first ever shiny app. Thank you for getting us confident and hope we continue produce more exciting application
+
+## My First Ever Shiny App
+
+A little history of me and R. I've had a very cordial and user-friendly relationship with R for around 9 months now. I was in a total mess initially when I was first introduced to it. I still remember my first class at Monash University, where Professor Stuart Lee taught us about clean data formats and I didn't even know how to create a folder in R during the hands-on session. Looking back at those days, from there to now, it gives me a tiny, (literally very tiny) sense of pride in my journey from not knowing R at all to now building my first ever shiny app.
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/gif1.gif")
+```
+
