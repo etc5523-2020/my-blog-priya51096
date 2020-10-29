@@ -1,0 +1,40 @@
+---
+title: "Reviewing the R Package - COVIDworld, Author - Yawen Zhang"
+description: |
+ R Package has always been enjoyable, and a small achievement in itself is the production of creating this a package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.
+author:
+  - name: Priya Ravindra Dingorkar
+    url: https://www.linkedin.com/in/priya-dingorkar
+    affiliation: Master's of Buisness Analytics, Monash University 
+    affiliation_url: https://www.monash.edu/
+date: 2020-09-18
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+library(coronavirus)
+library(gifski)
+library(ggplot2)
+library(gganimate)
+library(hrbrthemes)
+library(viridis)
+library(dygraphs)
+library(tidyverse)
+library(lubridate)
+library(dplyr)
+library(leaflet)
+library(plotly)
+library(xts)  
+```
+
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/pic01.png")
+```
+

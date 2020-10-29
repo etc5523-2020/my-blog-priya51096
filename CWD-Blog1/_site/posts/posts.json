@@ -32,6 +32,22 @@
     "input_file": {}
   },
   {
+    "path": "posts/Review/",
+    "title": "Reviewing the R Package - COVIDworld, Author - Yawen Zhang",
+    "description": "R Package has always been enjoyable, and a small achievement in itself is the production of creating this a package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.",
+    "author": [
+      {
+        "name": "Priya Ravindra Dingorkar",
+        "url": "https://www.linkedin.com/in/priya-dingorkar"
+      }
+    ],
+    "date": "2020-09-18",
+    "categories": [],
+    "preview": "posts/Review/Data/pic01.png",
+    "last_modified": "2020-10-29T11:06:33+11:00",
+    "input_file": "Review.utf8.md"
+  },
+  {
     "path": "posts/PeruAnalysis/",
     "title": "Escenario COVID-19 en PERÚ",
     "description": "Covid-19 cases are growing unparalleled worldwide, exceeding the regular numbers. One thing that is obvious, is that to adapt to change and we all know that change is inevitable. We have undergone an extraordinary change in our way of life in the last few months due to COVID-19 and the same applies to this entire globe. Let’s look at the state of this pandemic, in the country of Peru also known as the Land of the Incas, with a population of 31.99 million in South America.",
