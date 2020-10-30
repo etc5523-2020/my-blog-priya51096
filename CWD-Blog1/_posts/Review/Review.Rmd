@@ -1,7 +1,7 @@
 ---
 title: "Review on R Package - COVIDworld"
 description: |
- R Package has always been enjoyable, and a small achievement in itself is the production of creating this a package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.
+ R Package has always been enjoyable, and a small achievement in itself is the production of creating this package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.
 author:
   - name: Priya Ravindra Dingorkar
     url: https://www.linkedin.com/in/priya-dingorkar
@@ -43,7 +43,7 @@ As expected, all the requirement were best meet by the package :
 - The valid selection of the right license
 - README is very attractive and draws the person to know more about this package
 - The vignette is beautiful designed the graphs are eye catching, has clear instruction on running the app and its guidelines on how to launch and use the created application.
-- The package passed all the R-CMD-Checks as well it has an impressive logical structure
+- The package passed all the R-CMD-Checks as well as it has an impressive logical structure
 
 - In addition there was well customized pkgdown site, which sums it all for us and gives the first and detailed insight which draws the reader to use the package created by Yawen
 
@@ -60,12 +60,36 @@ It was near to impossible to find any faults or pin point mistakes that you have
 - I love the animation that you have made on the landing page, but if I could think of the possible feature that you should have added it would be on a click on the map, may the table of the country could be produced or country's COVID-19 details could be displayed 
 - The cases over time graphs is really fab and the added user interaction makes it more fun to play around. The one thing I felt was if the graph was more spread out it would it give out the details with more insights as it is a bit difficult to get the details mostly the x-axis details
 - Also the about tab in the shiny app is very plain and to much text, may be adding pictures or click features would make the app a little less textual and more interactive.
-- On the whole I feel the package is great really follows all the standards is extremely impressive and the added user interaction in thw shiny application is like an icing on the package. Well Done Yawen !!
+- Also, I feel a feedback section could be added in the README and vignette so that the users can leave their appreciation towards the package
+- On the whole I feel the package is great really follows all the standards is extremely impressive and the added user interaction in the shiny application is like an icing on the package. Well Done Yawen !!
 
+## We Learn, We Grow, We Excel
 
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/gif03.gif")
+```
 
+This the favorite section of my blog, thank you Yawen for introducing me to so many features that I need to learn and upgrade my skills. I am sure I am going to learn the animation graph for my further projects and work. The added user interactivity of so many features was really  impressive. The scale transformation was a great addition as it widens the range of the audience to use the application. The vignette of this package was informative and gives accurate guideline to run the application as well as the graphs and tables is creative feature to add which helps the user while using the application. The documentation using roxgyen2 is perfect and covers all the required functions for the user to understand your function perfectly. Henceforth I will try to include the examples parameter for all my exported functions after using your package. Thank you for all the motivation and encouragement.
 
+## Appendix 
 
+#### Documentation
+- [X] **Installation instructions:** for the package is found in README
+- [X] **Vignette(s)** demonstrating major functionality that runs successfully locally
+- [X] **Function Documentation:** for all exported functions in R help
+- [X] **Examples** for all exported functions in R Help that run successfully locally
+
+#### Functionality
+- [X] **Installation:** Installation succeeds as documented.
+- [X] **Functionality:** Any functional claims of the software been confirmed.
+- [X] **Automated tests:** Unit tests cover essential functions of the package and a reasonable range of inputs and conditions. All tests pass on the local machine.
+
+#### Comments
+- The Installation for easy and followed the same as the README
+- The Vignette demonstrated all the guidelines for the usage of the application and the package
+- The documentation is perfect and all function are correctly exported, with sufficient documentation
+- All examples for functions were given 
+- All tests, functionality worked absolutely correct
 
 
 
