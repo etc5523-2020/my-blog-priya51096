@@ -1,5 +1,21 @@
 [
   {
+    "path": "posts/Review/",
+    "title": "Review on R Package - COVIDworld",
+    "description": "R Package has always been enjoyable, and a small achievement in itself is the production of creating this package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.",
+    "author": [
+      {
+        "name": "Priya Ravindra Dingorkar",
+        "url": "https://www.linkedin.com/in/priya-dingorkar"
+      }
+    ],
+    "date": "2020-10-30",
+    "categories": [],
+    "preview": "posts/Review/Data/pic01.png",
+    "last_modified": "2020-10-30T16:16:17+11:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/Self-Reflection/",
     "title": "Learning from Self-Reflection",
     "description": "The willingness of humans to cultivate introspection and to make an effort to understand more about their actions, can be termed as human self-reflection. The secret to self-awareness it helps us to look rationally at our actions. In this blog, let us review, introspect and engage in the act of self reflection for the first ever shiny app I ever made in my life. ”What we perceive about ourselves is greatly a reflection of how we will end up living our lives.” – Stephen Richards",
@@ -13,22 +29,6 @@
     "categories": [],
     "preview": "posts/Self-Reflection/Data/sf.jpg",
     "last_modified": "2020-10-16T20:09:08+11:00",
-    "input_file": {}
-  },
-  {
-    "path": "posts/Review/",
-    "title": "Review on R Package - COVIDworld",
-    "description": "R Package has always been enjoyable, and a small achievement in itself is the production of creating this package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.",
-    "author": [
-      {
-        "name": "Priya Ravindra Dingorkar",
-        "url": "https://www.linkedin.com/in/priya-dingorkar"
-      }
-    ],
-    "date": "2020-09-18",
-    "categories": [],
-    "preview": "posts/Review/Data/pic01.png",
-    "last_modified": "2020-10-30T16:03:48+11:00",
     "input_file": {}
   },
   {

@@ -7,7 +7,7 @@ author:
     url: https://www.linkedin.com/in/priya-dingorkar
     affiliation: Master's of Buisness Analytics, Monash University 
     affiliation_url: https://www.monash.edu/
-date: 2020-09-18
+date: 2020-10-30
 output:
   distill::distill_article:
     self_contained: false
