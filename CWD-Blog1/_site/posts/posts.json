@@ -33,7 +33,7 @@
   },
   {
     "path": "posts/Review/",
-    "title": "Reviewing the R Package - COVIDworld, Author - Yawen Zhang",
+    "title": "Review on R Package - COVIDworld",
     "description": "R Package has always been enjoyable, and a small achievement in itself is the production of creating this a package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.",
     "author": [
       {
@@ -44,7 +44,7 @@
     "date": "2020-09-18",
     "categories": [],
     "preview": "posts/Review/Data/pic01.png",
-    "last_modified": "2020-10-29T11:06:33+11:00",
+    "last_modified": "2020-10-30T15:01:03+11:00",
     "input_file": "Review.utf8.md"
   },
   {

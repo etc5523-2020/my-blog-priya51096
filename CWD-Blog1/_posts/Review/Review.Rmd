@@ -1,5 +1,5 @@
 ---
-title: "Reviewing the R Package - COVIDworld, Author - Yawen Zhang"
+title: "Review on R Package - COVIDworld"
 description: |
  R Package has always been enjoyable, and a small achievement in itself is the production of creating this a package itself. We'll be analysing a first-time package by Yawen Zhang today on this blog. Set up your analysis mode and let us explore COVIDworld 's R kit.
 author:
@@ -17,24 +17,73 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
-```{r}
-library(coronavirus)
-library(gifski)
-library(ggplot2)
-library(gganimate)
-library(hrbrthemes)
-library(viridis)
-library(dygraphs)
-library(tidyverse)
-library(lubridate)
-library(dplyr)
-library(leaflet)
-library(plotly)
-library(xts)  
-```
-
 
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("Data/pic01.png")
 ```
+
+## Overview
+
+We will study the first ever package of Yawen Zhang from one of the top notch colleges, Monash University, one of the skilled business analysts in the making. First of all, most heartfelt congratulations for this achievement, you did a wonderful job. This package might tell us about the COVID-19 scenario around the globe, as the name implies **COVIDworld**. Let us understand the state of this pandemic through Yawen 's R package. I am all set and geared up to review this package !! Review mode on !!
+
+## What did I think this package would do? Did it do it?
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/gif01.gif")
+```
+
+First of all, I expected a launch app() function according to the instructions provided to us that runs the embedded shiny application in Yawen 's package smoothly. The package name, as stated earlier, means that we may see graphs/tables for the various countries impacted by this pandemic. I also expected the package was easily downloaded from the github version using the devtools and install packages inbuilt functions in R. As per the assessment guidelines, different function creation for the shiny app, their appropriate unit testing. cleared CMD-R-Check, vignettes are the other functionality that I was expecting to see. Lets us now understand what went well and may be what did not. 
+
+As expected, all the requirement were best meet by the package :
+
+- the package was easily downloaded from github version with zero debugging, the app was placed correctly in the inst/app folder and the shiny application was viewed to the user using the launch_app with great ease.
+- the functions created were perfectly logical and well substituted in the app
+- the unit testing passed with no errors
+- The DESCRIPTION file is well organized and clearly states the requirement of the package and its dependencies as well.
+- The valid selection of the right license
+- README is very attractive and draws the person to know more about this package
+- The vignette is beautiful designed the graphs are eye catching, has clear instruction on running the app and its guidelines on how to launch and use the created application.
+- The package passed all the R-CMD-Checks as well it has an impressive logical structure
+
+- In addition there was well customized pkgdown site, which sums it all for us and gives the first and detailed insight which draws the reader to use the package created by Yawen
+
+On the whole I feel there is a lot of effort that has been gone in making the application !! Great Job Yawen !!
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("Data/gif02.gif")
+```
+ 
+## Improvements
+
+It was near to impossible to find any faults or pin point mistakes that you have made in this package or in the shiny application. If I had to mention a few of them points that could change are :
+
+- I love the animation that you have made on the landing page, but if I could think of the possible feature that you should have added it would be on a click on the map, may the table of the country could be produced or country's COVID-19 details could be displayed 
+- The cases over time graphs is really fab and the added user interaction makes it more fun to play around. The one thing I felt was if the graph was more spread out it would it give out the details with more insights as it is a bit difficult to get the details mostly the x-axis details
+- Also the about tab in the shiny app is very plain and to much text, may be adding pictures or click features would make the app a little less textual and more interactive.
+- On the whole I feel the package is great really follows all the standards is extremely impressive and the added user interaction in thw shiny application is like an icing on the package. Well Done Yawen !!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
